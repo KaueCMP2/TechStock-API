@@ -1,0 +1,15 @@
+CREATE DATABASE TechStockDb
+GO
+
+USE TechStockDb
+GO
+
+CREATE TABLE Produtos 
+(
+ProdutoId INT IDENTITY(1,1),
+Nome NVARCHAR(100) NOT NULL,
+Descricao NVARCHAR(MAX),
+Preco DECIMAL(10,2) NOT NULL,
+Quantidade INT
+);
+GO

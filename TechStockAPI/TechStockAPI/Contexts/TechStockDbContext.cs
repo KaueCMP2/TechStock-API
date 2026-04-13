@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using TechStockAPI.Domains;
 
-namespace TechStockAPI.Context;
+namespace TechStockAPI.Contexts;
 
 public partial class TechStockDbContext : DbContext
 {
@@ -16,7 +16,7 @@ public partial class TechStockDbContext : DbContext
     {
     }
 
-    public virtual DbSet<Produtos> Produtos { get; set; }
+    public virtual DbSet<Produto> Produto { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -24,13 +24,12 @@ public partial class TechStockDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Produtos>(entity =>
+        modelBuilder.Entity<Produto>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.ProdutoId).HasName("PK__Produto__9C8800E3659F9803");
 
             entity.Property(e => e.Nome).HasMaxLength(100);
             entity.Property(e => e.Preco).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.ProdutoId).ValueGeneratedOnAdd();
         });
 
         OnModelCreatingPartial(modelBuilder);

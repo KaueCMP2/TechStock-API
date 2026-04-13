@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TechStockAPI.Domains;
 
-public partial class Produtos
+public partial class Produto
 {
     public int ProdutoId { get; set; }
 
